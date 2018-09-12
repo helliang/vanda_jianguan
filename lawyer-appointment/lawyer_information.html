@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>律师会见预约</title>
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weui1.css"/>
+    <link rel="stylesheet" href="../css/example.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
+    <script src="../js/zepto.min.js"></script>
+</head>
+<body ontouchstart>
+<form id="form">
+    <div class="weui-cells__title">律师信息</div>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell weui_padding">
+            <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="text" required="" placeholder="请输入姓名" emptytips="请输入姓名">
+            </div>
+            <div class="weui_cell_ft">
+                <i class="weui_icon_warn"></i>
+            </div>
+        </div>
+        <div class="weui_cell weui_padding">
+            <div class="weui_cell_hd"><label class="weui_label">身份证号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" required="^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$" pattern="" maxlength="18" placeholder="请输入身份证号" emptytips="请输入身份证号" notmatchtips="请输入正确的身份证号">
+            </div>
+            <div class="weui_cell_ft">
+                <i class="weui_icon_warn"></i>
+            </div>
+        </div>
+        <div class="weui_cell weui_padding">
+            <div class="weui_cell_hd"><label class="weui_label">联系电话</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="tel" required="" pattern="[0-9]{11}" maxlength="11" placeholder="请输入您的联系电话" emptytips="请输入手机号" notmatchtips="请输入正确的手机号">
+            </div>
+            <div class="weui_cell_ft">
+                <i class="weui_icon_warn"></i>
+            </div>
+        </div>
+        <div class="weui_cell weui_padding">
+            <div class="weui_cell_hd"><label class="weui_label">执业证明号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="text" required="" placeholder="请输入执业证明号" emptytips="请输入执业证明号">
+            </div>
+            <div class="weui_cell_ft">
+                <i class="weui_icon_warn"></i>
+            </div>
+        </div>
+        <div class="weui_cell weui_padding">
+            <div class="weui_cell_hd"><label class="weui_label">执业机构</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="text" required="" placeholder="请输入执业机构" emptytips="请输入执业机构">
+            </div>
+            <div class="weui_cell_ft">
+                <i class="weui_icon_warn"></i>
+            </div>
+        </div>
+    </div>
+    <div class="weui-cells__title">被监管人信息</div>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell weui_padding">
+            <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="text" required="" placeholder="请输入被监管人身份证号" emptytips="请输入被监管人身份证号">
+            </div>
+            <div class="weui_cell_ft">
+                <i class="weui_icon_warn"></i>
+            </div>
+        </div>
+        <div class="weui_cell weui_padding">
+            <div class="weui_cell_hd"><label class="weui_label">身份证号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" required="" pattern="^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$" maxlength="18" placeholder="请输入身份证号" emptytips="请输入身份证号" notmatchtips="请输入正确的身份证号">
+            </div>
+            <div class="weui_cell_ft">
+                <i class="weui_icon_warn"></i>
+            </div>
+        </div>
+        <div class="weui_cell weui_padding">
+            <div class="weui_cell_hd"><label class="weui_label">委托人</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="text" required="" placeholder="请输入委托人姓名" emptytips="请输入委托人姓名">
+            </div>
+            <div class="weui_cell_ft">
+                <i class="weui_icon_warn"></i>
+            </div>
+        </div>
+    </div>
+    <div class="weui-btn-area">
+        <a id="formSubmitBtn" href="javascript:" class="weui_btn weui_btn_primary">下一步</a>
+    </div>
+</form>
+ <script>
+var $form = $("#form");
+$form.form();
+$("#formSubmitBtn").on("click", function(){
+    $form.validate(function(error){
+        if(error){
+
+        }else{
+                        console.log(error)
+            $.toptips('验证通过提交','ok');
+        }
+    });
+});
+</script>
+</body>
+</html>

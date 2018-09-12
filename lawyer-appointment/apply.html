@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>律师会见预约</title>
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/example.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
+	<script src="../js/zepto.min.js"></script>
+</head>
+<body ontouchstart>
+<div class="weui-cells__title">会见信息</div>
+<div class="weui-cells">
+    <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+            <label for="" class="weui-label">监所所在地</label>
+        </div>
+        <div class="weui-cell__bd">
+  			<div class="page__bd page__bd_spacing">
+  				<input type="text" class="weui-select" id="showPicker" placeholder="请选择监所所在城市" readonly="readonly" value="">
+		    </div>
+        </div>
+    </div>
+    <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+            <label for="" class="weui-label">监所名称</label>
+        </div>
+        <div class="weui-cell__bd">
+  			<div class="page__bd page__bd_spacing">
+  				<input type="text" class="weui-select" id="showPickers" placeholder="请完成上一项选择" readonly="readonly" value="">
+		    </div>
+        </div>
+    </div>
+    <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+            <label for="" class="weui-label">会见时段</label>
+        </div>
+        <div class="weui-cell__bd">
+  			<div class="page__bd page__bd_spacing">
+  				<input type="text" class="weui-select" id="showPicker" placeholder="请完成上一项选择" readonly="readonly" value="">
+		    </div>
+        </div>
+    </div>
+</div>
+<div class="weui-btn-area">
+    <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">下一步</a>
+</div>
+<script type="text/javascript">
+    $('#showPicker').on('click', function () {
+        weui.picker([{
+            label: '飞机票',
+            value: 0
+        }, {
+            label: '火车票',
+            value: 1
+        }, {
+            label: '的士票',
+            value: 5
+        },{
+            label: '公交票 (disabled)',
+            disabled: true,
+            value: 3
+        }, {
+            label: '其他',
+            value: 4
+        }], {
+            onChange: function (result) {
+                console.log('1111111111',result);
+            },
+            onConfirm: function (result) {
+                console.log('22222',result);
+                console.log($('#showPicker').val(result))
+            }
+        });
+    });
+</script>
+    <script src="../js/jweixin-1.0.0.js"></script>
+    <script src="../js/weui.min.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>律师会见探访</title>
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/example.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body ontouchstart>
+    <div v-cloak id="popup" @click="popupHide">
+        <div class="time-head">
+            <div class="time-text month"></div>
+            <div class="content">
+                <section class="srv-time-selector" v-show="switchShow">
+                    <div class="bd">
+                        <div class="header">
+                            <div class="data-picker">
+                                <div class="wrapper">
+                                    <button v-for="(date, index) in dates.nowMonth" :id="date.year+'-'+date.month+'-'+date.day"  @click="selectedNow(index, $event)">
+                                        {{date.week}}
+                                        <span :class="[{current: date.current}, {'appointment': !date.appointment}]">{{date.day}}</span>
+                                    </button>
+                                </div>
+                            </div>                      
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="time-top">
+        <span class="time-yy">请选择预约时段</span>
+        <div class="time-check">
+            <div class="wage_left">
+                <span class="time-text color">8:30-9:00</span>
+                <span class="time-text">剩余:<span class="dgdui-text_key">10</span>号</span>
+            </div>
+            <div class="wage_left">
+                <span class="time-text color">9:00-9:30</span>
+                <span class="time-text">剩余:<span class="dgdui-text_key">10</span>号</span>
+            </div>
+            <div class="wage_left">
+                <span class="time-text color">9:30-10:00</span>
+                <span class="time-text">剩余:<span class="dgdui-text_key">10</span>号</span>
+            </div>
+            <div class="wage_left">
+                <span class="time-text color">10:30-10:30</span>
+                <span class="time-text">剩余:<span class="dgdui-text_key">10</span>号</span>
+            </div>
+            <div class="wage_left">
+                <span class="time-text color">10:30-11:00</span>
+                <span class="time-text">剩余:<span class="dgdui-text_key">10</span>号</span>
+            </div>
+            <div class="wage_left">
+                <span class="time-text color">11:00-11:30</span>
+                <span class="time-text">剩余:<span class="dgdui-text_key">10</span>号</span>
+            </div>
+            <div class="wage_left">
+                <span class="time-text color">14:30-15:00</span>
+                <span class="time-text">剩余:<span class="dgdui-text_key">10</span>号</span>
+            </div>
+            <div class="wage_left">
+                <span class="time-text color">15:00-15:30</span>
+                <span class="time-text">剩余:<span class="dgdui-text_key">10</span>号</span>
+            </div>
+            <div class="wage_left">
+                <span class="time-text color">15:30-16:00</span>
+                <span class="time-text">剩余:<span class="dgdui-text_key">10</span>号</span>
+            </div>
+            <div class="wage_left">
+                <span class="time-text color">16:00-16:30</span>
+                <span class="time-text">剩余:<span class="dgdui-text_key">10</span>号</span>
+            </div>
+        </div>
+    </div>
+    <div class="weui-msg__opr-area">
+        <p class="weui-btn-area">
+            <a href="javascript:;" class="weui-btn weui-btn_primary">下一步</a>
+        </p>
+    </div>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script> 
+    <script src="http://www.jq22.com/jquery/vue.min.js"></script>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#popup',           
+                data: {
+                switchShow: true,
+                currentMonth: null,
+                currentHours: null,
+                isFirstDay: 0,
+                popupShow: false,
+                isChoseTime: true,
+                isChoseTimeShow: true,
+                nextProtoWeek: null,
+                nullDay: [],
+                nextNullDay: [],
+                dates: {
+                    nowMonth: [],
+                    nextMonth: []
+                }
+            },
+            methods: {
+                selectedNow: function(index, event) {
+                    for (date in this.dates.nowMonth){
+                        this.dates.nowMonth[date].current = false;
+                        
+                    }
+                    for (date in this.dates.nextMonth){
+                        this.dates.nextMonth[date].current = false;
+                        
+                    };
+                    
+                    if (!this.dates.nowMonth[index].appointment) {
+                        this.isChoseTimeShow = false;
+                    } else {
+                        this.isChoseTimeShow = true;
+                        this.isChoseTime = true;
+                    }
+                    
+                    this.isFirstDay = index;
+                    console.log(this.dates.nowMonth[index].year +'-'+this.dates.nowMonth[index].month+'-'+this.dates.nowMonth[index].day);
+                    this.tableHide();
+                    this.dates.nowMonth[index].current = true;
+                    
+                },
+                selectedNext: function(index, event) {
+                    
+                    for (date in this.dates.nextMonth){
+                        this.dates.nextMonth[date].current = false;
+                        
+                    }
+                    for (date in this.dates.nowMonth){
+                        this.dates.nowMonth[date].current = false;
+                        
+                    };
+                    
+                    if (!this.dates.nextMonth[index].appointment) {
+                        this.isChoseTimeShow = false;
+                    } else {
+                        this.isChoseTimeShow = true;
+                        this.isChoseTime = true;
+                    }                   
+                    
+                    this.isChoseTime = true;
+                    this.tableHide();
+
+                    this.dates.nextMonth[index].current = true;
+                    
+                },
+                
+                tableShow: function() {
+                
+                    this.switchShow = false;
+                    
+                },
+                
+                tableHide: function() {
+                
+                    this.switchShow = true;
+                    
+                },
+                
+                timeChose: function(key, event) {
+                    this.isChoseTime = false;
+                    $(event.target).siblings().removeClass('chosed');
+                    $(event.target).addClass('chosed'); 
+                    
+                },
+                
+                notChoseTime: function() {
+                    this.isChoseTime = true;
+                },
+                
+                popupHide: function() {
+                    popupShow = false;
+                },
+                
+                // submit
+                submitFunc: function() {
+                    var time, choseH, subInfo;
+                    
+                    for (ts in this.dates.nowMonth) {
+                        if (this.dates.nowMonth[ts].current == true) {
+                            time = this.dates.nowMonth[ts];
+                        }
+                    }
+                    for (tc in this.dates.nextMonth) {
+                        if (this.dates.nextMonth[tc].current == true) {
+                            time = this.dates.nextMonth[tc];
+                        }
+                    }
+                    
+                    var choseHours = $('.hour-this');
+                    var noSel = $('.no-sel');
+                    
+                    if(noSel.hasClass('not-chose-time')) {
+                        choseH = null;
+                    } else {
+                    
+                        for (var h = 0; h < choseHours.length; h++) {
+                            if(choseHours.eq(h).hasClass('chosed')) {
+                                choseH = choseHours.eq(h).text();
+                            }
+                        }   
+                        
+                    }
+                
+                    
+                    subInfo = {
+                        "day": time,
+                        "hour": choseH 
+                    }
+                    console.log(subInfo);
+                }
+            },
+            
+            created: function() {
+                var totalDays = 16,
+                date = new Date(),
+                currentYears = date.getFullYear(),
+                week = new Array('周日', '周一', '周二', '周三', '周四', '周五', '周六'),
+                currentMonth = date.getMonth() + 1,
+                currentDay = date.getDate(),
+                protoWeek = date.getDay(),
+                currentHours = date.getHours()
+                this.currentYears = currentYears;   
+                this.currentMonth = currentMonth;   
+                this.currentDay =   currentDay;
+                this.currentHours = currentHours;
+                for (var i = 0; i < totalDays; i++) {
+                
+                    var month = date.getMonth() + 1,
+                            day = date.getDate(),
+                            year = date.getFullYear(),
+                            proteWeek = date.getDay(),
+                            timestamp = date.getTime(),
+                            appointment = true;
+                            
+                            if(proteWeek == 0 || proteWeek == 6) {
+                                appointment = false;
+                            }
+                            
+                    var d = {
+                                'timestamp': timestamp,
+                                'appointment': appointment,
+                                'month': month,
+                                'day': day,
+                                'year':year,
+                                'proteWeek': proteWeek,
+                                'week': week[proteWeek],
+                                'current': false
+                            };
+                    
+                    if (month == currentMonth) {
+                        this.dates.nowMonth.push(d);
+                    } else {
+                        this.dates.nextMonth.push(d);
+                    }
+                    
+                    date.setDate(date.getDate() + 1);
+                }
+                
+                
+                this.dates.nowMonth[0].current = true;
+                console.log(this.dates);
+
+                $('.month').html(this.dates.nowMonth[0].month+"月")          
+                for(var j = 0; j < protoWeek; j++) {
+                    this.nullDay.push("");
+                }
+                
+                for(var k = 0; k < this.nextProtoWeek; k++) {
+                
+                    this.nextNullDay.push("");
+                    
+                }
+            } 
+        })
+    </script>
+    <script type="text/javascript">
+        $('.wage_left').click(function(){
+            $(this).find("span").addClass("color_bg").parent().siblings().find("span").removeClass("color_bg");
+            //获取时间段
+            console.log($(this).children("span.color").html())
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+	<title>预约类型</title>
+	<link rel="stylesheet" href="css/weui.css"/>
+	<link rel="stylesheet" href="css/example.css"/>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- 	<script type="text/javascript">
+		$.ajax({
+		    url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20%3D%202151330&format=json',
+		    type: 'POST',
+		    dataType: 'json'
+		})
+		.done(function(data) {
+		    var city = data.query.results.channel.location.city;
+    		var forecast = data.query.results.channel.item.forecast;
+		    for(var i = 0;i<forecast.length;i++){
+		    	var txt = '<div class="task_num">'+forecast[i].date+'</div>';
+		    	$('.btn').append(txt);
+		    	console.log(txt)
+		    }
+		})
+		.fail(function() {
+		    alert('服务器超时，请重试！');
+		});
+</script> -->
+</head>
+<body ontouchstart>
+	<div class="btn"></div>
+	<div class="weui-cells">
+		<a class="weui-cell weui-cell_access" href="javascript:;">
+			<div class="weui-cell__bd">
+				<p>家属探访预约</p>
+			</div>
+			<div class="weui-cell__ft">
+			</div>
+		</a>
+	</div>
+	<div class="weui-cells">
+		<a class="weui-cell weui-cell_access" href="javascript:;">
+			<div class="weui-cell__bd">
+				<p>律师探访预约</p>
+			</div>
+			<div class="weui-cell__ft">
+			</div>
+		</a>
+	</div>
+</body>
+</html>
