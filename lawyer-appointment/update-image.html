@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<title>图片上传</title>
+	<link rel="stylesheet" href="../css/weui.css"/>
+	<link rel="stylesheet" href="../css/example.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/public.css">
+	<script src="../js/zepto.min.js"></script>
+	<script src="../js/jweixin-1.0.0.js"></script>
+</head>
+<body ontouchstart>
+    <header class="updata_dow"
+        <span>上传个人执照</span>
+    </header>
+<form>
+	<!-- <input type="file" name="picFile" id="picFile" value="" > -->	
+    <div class="page_top">
+    	<span>手持证件照</span>
+    	<div class="weui-phone" id="showIOSActionSheet">
+    		<!-- <img id="imgUrl" name="imgUrl" src="../img/logo.png" onerror="this.src='../img/logo.png'" style="width: 150px;height: 160px;" class="wlimage" > -->
+    		<div class="weui-phone_center">
+	    		<img src="../images/phone.png">
+	    		<span>证件照</span>
+    		</div>
+    	</div>
+    </div>
+    <div class="page_top">
+    	<span>职业证明</span>
+    	<div class="weui-phone" id="showIOSActionSheets">
+    		<div class="weui-phone_center">
+	    		<img src="../images/phone.png">
+	    		<span>职业证明</span>
+    		</div>
+    	</div>
+    </div>
+    <div class="page_top">
+            <span>委托书</span>
+            <div class="weui-phone" id="showIOSActionSheets">
+                <div class="weui-phone_center">
+                    <img src="../images/phone.png">
+                    <span>委托书</span>
+                </div>
+            </div>
+        </div>
+    <div>
+        <div class="weui-mask" id="iosMask" style="display: none"></div>
+        <div class="weui-actionsheet" id="iosActionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell weui_colors">拍照</div>
+                <div class="weui-actionsheet__cell weui_colors">从相册选取</div>
+            </div>
+            <div class="weui-actionsheet__action">
+                <div class="weui-actionsheet__cell" id="iosActionsheetCancel" >取消</div>
+            </div>
+        </div>
+    </div>
+    <div class="weui-msg__opr-area">
+        <p class="weui-btn-area">
+            <a href="apply.html" class="weui-btn weui-btn_primary">确认上传</a>
+        </p>
+    </div>
+ </form>
+ <script type="text/javascript">
+    // 弹出层 
+    $(function(){
+        var $iosActionsheet = $('#iosActionsheet');
+        var $iosMask = $('#iosMask');
+
+        function hideActionSheet() {
+            $iosActionsheet.removeClass('weui-actionsheet_toggle');
+            $iosMask.fadeOut(200);
+        }
+        $iosMask.on('click', hideActionSheet);
+        $('#iosActionsheetCancel').on('click', hideActionSheet);
+        $("#showIOSActionSheet").on("click", function(){
+            $iosActionsheet.addClass('weui-actionsheet_toggle');
+            $iosMask.fadeIn(200);
+        });
+        $("#showIOSActionSheets").on("click", function(){
+            $iosActionsheet.addClass('weui-actionsheet_toggle');
+            $iosMask.fadeIn(200);
+        });
+    });
+</script>
+</body>
+</html>

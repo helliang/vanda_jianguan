@@ -3,27 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <title>预约进度</title>
+    <title>律师会见预约</title>
     <link rel="stylesheet" href="../css/weui.css"/>
     <link rel="stylesheet" href="../css/example.css"/>
     <link rel="stylesheet" type="text/css" href="../css/public.css">
     <script src="../js/zepto.min.js"></script>
 </head>
 <body ontouchstart>
-    <div class="wewui-riso">
-        <div class="wewui-riso__top">
-            <span>07-19</span>
-            <span></span>
-            <span>申请</span>
-        </div>
-        <div class="weui_xian"></div>
-        <div class="riso__left">
-            <span class="riso_span">07-19</span>
-            <i class="weui-icon-success"></i>
-            <span class="weui-tguo">
-                <span>申请通过</span>
-                <p>您的预约已通过审核</p>
-            </span>
+    <div class="weui-msg">
+        <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title">预约成功</h2>
+            <p class="weui-msg__desc">如需“取消预约”或查看详情，</br>请进入 个人中心->我的事项</p>
         </div>
     </div>
     <div class="weui-media-box__top weui-form-preview__bd">
@@ -50,8 +41,7 @@
     </div>
     <div class="weui-msg__opr-area">
         <p class="weui-btn-area">
-            <a href="schedule_appointmenter.html" class="weui-btn weui-btn_primary">返回首页</a>
-            <a href="javascript:;" class="weui-btn weui-btn_default">取消预约</a>
+            <a href="javascript:history.back();" class="weui-btn weui-btn_primary">返回首页</a>
         </p>
     </div>
 </body>
